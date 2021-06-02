@@ -80,3 +80,4 @@ affinity: {}
 
 environment:
   client: test
+  s3_bucket: shared
