@@ -1,0 +1,23 @@
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  workingDirectory: .
+
+jobs:
+  - job: Publish 
+    displayName: Publish
+    pool: INFRA_MANAGER_POOL
+    steps:
+      - task: Bash@3
+        displayName: Build
+        inputs:
+          script: sudo make build TF_BUILD=true 
+          targetType: inline
+          workingDirectory: $(workingDirectory)/microservices/spatial_service/
+      - task: Bash@3
+        displayName: Publish
+        inputs:
+          script:  sudo make publish TF_BUILD=true
+          targetType: inline
+          workingDirectory: $(workingDirectory)/microservices/spatial_service/
