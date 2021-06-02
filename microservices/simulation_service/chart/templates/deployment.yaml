@@ -36,8 +36,6 @@ spec:
           env:
           - name: client
             value: {{ .Values.environment.client }}
-          - name: s3_bucket
-            value: {{ .Values.environment.s3_bucket }}
           ports:
             - name: http
               containerPort: 80
